@@ -75,7 +75,7 @@ namespace Apetit_API_2019.Controllers
         }
 
         [AcceptVerbs("GET")]
-        [Route("BuscarUsuarios")]
+        [Route("BuscarNutricionistas")]
         public List<Cli_Nutricionista> BuscarNutricionista()
         {
             return listanutricionista;
