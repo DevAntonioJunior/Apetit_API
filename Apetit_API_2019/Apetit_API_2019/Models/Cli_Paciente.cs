@@ -10,7 +10,7 @@ namespace Apetit_API_2019.Models
         public class Cli_Paciente
         {
             public int IdPaciente { get; set; }
-            [Required]
+            [Key]
             public String Nome { get; set; }
             [Required]
             public DateTime Dtnascimento { get; set; }

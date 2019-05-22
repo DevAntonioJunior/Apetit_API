@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Apetit_API_2019.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controllerPaciente]")]
     [ApiController]
     public class Cli_PacienteController : ControllerBase
     {
@@ -75,6 +75,5 @@ namespace Apetit_API_2019.Controllers
         {
             return listapaciente; 
         }
-
     }
 }
