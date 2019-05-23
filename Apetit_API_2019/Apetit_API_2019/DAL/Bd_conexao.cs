@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 namespace Apetit_API_2019.DAL
 {
     public class Bd_conexao
-    {
+    { 
         SqlConnection con = new SqlConnection();
+
+
+
 
         public Bd_conexao()
         {
@@ -33,5 +36,9 @@ namespace Apetit_API_2019.DAL
             }
         }
 
+        internal SqlTransaction BeginTransaction()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

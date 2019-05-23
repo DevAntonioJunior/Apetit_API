@@ -13,6 +13,7 @@ namespace Apetit_API_2019.Models
             [Key]
             public String Nome { get; set; }
             [Required]
+            public String Sobrenome { get; set; }
             public DateTime Dtnascimento { get; set; }
             [Required]
             public String Sexo { get; set; }
@@ -39,14 +40,14 @@ namespace Apetit_API_2019.Models
             [Required]
             public String Cidade { get; set; }
             [Required]
-            public DateTime Agconsulta { get; set; }
-            [Required]
-            public String CRN { get; set; }
+            public String Crn { get; set; }
+            
 
-            public Cli_Nutricionista(int idnutricionista, string nome, DateTime dtnascimento, string sexo, string cpf, string email, string telefone, string endereco, string cep, string complemento, string bairro, string login, string senha, string dieta, string cidade, DateTime agconsulta, string crn)
+        public Cli_Nutricionista(int idnutricionista, string nome, string sobrenome, DateTime dtnascimento, string sexo, string cpf, string email, string telefone, string endereco, string cep, string complemento, string bairro, string login, string senha, string dieta, string cidade, DateTime agconsulta, string crn)
             {
                 this.IdNutricionista = idnutricionista;
                 this.Nome = nome;
+                this.Sobrenome = sobrenome;  
                 this.Dtnascimento = dtnascimento;
                 this.Sexo = sexo;
                 this.Cpf = cpf;
@@ -58,8 +59,8 @@ namespace Apetit_API_2019.Models
                 this.Bairro = bairro;
                 this.Login = login;
                 this.Senha = senha;
-                this.CRN = crn;
-                this.Agconsulta = agconsulta;
+                this.Crn = crn;
+                
                 
                 
         }
