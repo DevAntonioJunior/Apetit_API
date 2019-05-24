@@ -39,11 +39,12 @@ namespace Apetit_API_2019.DAL
             cmd2.Parameters.Add(nutricionista.Cidade);
             cmd2.Parameters.Add(nutricionista.Bairro);
 
-            
-                SqlTransaction tran = _Conexao.BeginTransaction();
+            _Conexao.Conectar();
+
+                SqlTransaction tran = _Conexao.BeginTransaction(Iso);
             try
             {
-                _Conexao.Conectar(); 
+                 
                 cmd1.Transaction = tran;
                 cmd1.ExecuteNonQuery();
 
@@ -63,6 +64,9 @@ namespace Apetit_API_2019.DAL
             {
                 _Conexao.Desconectar(); 
             }
+
+
+
 
 
 
