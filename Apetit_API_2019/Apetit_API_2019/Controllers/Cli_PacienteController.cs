@@ -18,17 +18,17 @@ namespace Apetit_API_2019.Controllers
         [AcceptVerbs("POST")]
         [Route("CadastrarPaciente")]
 
-        public string CadastrarPaciente(Cli_Paciente paciente)
+        public void CadastrarPaciente(Cli_Paciente paciente)
         {
             listapaciente.Add(paciente);
 
 
-            return "Paciente cadastrado com sucesso";
+            
         }
 
         [AcceptVerbs("PUT")]
         [Route("EditarPaciente")]
-        public string EditarPaciente(Cli_Paciente paciente)
+        public void EditarPaciente(Cli_Paciente paciente)
         {
 
             listapaciente.Where(n => n.IdPaciente == paciente.IdPaciente).Select(s =>
@@ -43,18 +43,18 @@ namespace Apetit_API_2019.Controllers
                 return s;
             }).ToList();
 
-            return "Paciente alterado com sucesso!!";
+            
         }
 
         [AcceptVerbs("DELETE")]
         [Route("ExcluiPaciente")]
-        public string ExcluirPaciente(int idpaciente)
+        public void  ExcluirPaciente(int idpaciente)
         {
             Cli_Paciente paciente = listapaciente.Where(n => n.IdPaciente == idpaciente)
                 .Select(n => n).FirstOrDefault();
             listapaciente.Remove(paciente);
 
-            return "Paciente excluido com sucesso";
+            
         }
 
         [AcceptVerbs("GET")]

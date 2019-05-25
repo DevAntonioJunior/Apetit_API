@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
- 
+
 
 
 
 namespace Apetit_API_2019.DAL
 {
-    public class NutricionistaDAL {
+    public class NutricionistaDAL
+    {
 
         Bd_conexao _Conexao = new Bd_conexao();
         SqlCommand cmd1 = new SqlCommand();
@@ -41,10 +42,10 @@ namespace Apetit_API_2019.DAL
 
             _Conexao.Conectar();
 
-                SqlTransaction tran = _Conexao.BeginTransaction(Iso);
+            SqlTransaction tran = _Conexao.BeginTransaction();
             try
             {
-                 
+
                 cmd1.Transaction = tran;
                 cmd1.ExecuteNonQuery();
 
@@ -62,27 +63,104 @@ namespace Apetit_API_2019.DAL
             }
             finally
             {
-                _Conexao.Desconectar(); 
+                _Conexao.Desconectar();
+            }
+        }
+
+            public void EditarNutricionista(Cli_Nutricionista nutricionista)
+            {
+                cmd1.CommandText = ("UPDATE TB_Nutricionista SET('nome_nutricionista=?','sobrenome_nutricionista=?','cpf=?','dt_nascimento=?','sexo=?','login=?','senha=?','email=?','num_celular=?'");
+                cmd1.Parameters.Add(nutricionista.Nome);
+                cmd1.Parameters.Add(nutricionista.Sobrenome);
+                cmd1.Parameters.Add(nutricionista.Cpf);
+                cmd1.Parameters.Add(nutricionista.Dtnascimento);
+                cmd1.Parameters.Add(nutricionista.Sexo);
+                cmd1.Parameters.Add(nutricionista.Login);
+                cmd1.Parameters.Add(nutricionista.Senha);
+                cmd1.Parameters.Add(nutricionista.Email);
+                cmd1.Parameters.Add(nutricionista.Telefone);
+
+
+                cmd2.CommandText = "UPDATE Endereco_Nutricionista SET('crn=?','nome_rua=?',num_rua,cidade,bairro) values(?,?,?,?,?)";
+                cmd2.Parameters.Add(nutricionista.Crn);
+                cmd2.Parameters.Add(nutricionista.Endereco);
+                cmd2.Parameters.Add(nutricionista.Complemento);
+                cmd2.Parameters.Add(nutricionista.Cidade);
+                cmd2.Parameters.Add(nutricionista.Bairro);
+
+                _Conexao.Conectar();
+
+                SqlTransaction tran = _Conexao.BeginTransaction();
+                try
+                {
+
+                    cmd1.Transaction = tran;
+                    cmd1.ExecuteNonQuery();
+
+
+                    cmd2.Transaction = tran;
+                    cmd2.ExecuteNonQuery();
+                    tran.Commit();
+
+
+                }
+                catch (SqlException ex)
+                {
+                    tran.Rollback();
+
+                }
+                finally
+                {
+                    _Conexao.Desconectar();
+                }
+
             }
 
 
-
-
-
-
-
-
-
-                
-             
-            
-            
-            
+        public void DeletarNutricionista(int Idnutricionista)
+        {
+            cmd1.CommandText = "Delete from TB_Nutricionista where Idnutricionista=? ";
+            cmd1.Parameters.Remove(Idnutricionista);
             
 
-         }
-    
-        
-        
-    
-}
+
+            cmd2.CommandText = "Delete from Endereco_Nutricionista where Id_endereco";
+            cmd2.Parameters.Remove(Id_endereco);
+     
+
+            _Conexao.Conectar();
+
+            SqlTransaction tran = _Conexao.BeginTransaction();
+            try
+            {
+
+                cmd1.Transaction = tran;
+                cmd1.ExecuteNonQuery();
+
+
+                cmd2.Transaction = tran;
+                cmd2.ExecuteNonQuery();
+                tran.Commit();
+
+
+            }
+            catch (SqlException ex)
+            {
+                tran.Rollback();
+
+            }
+            finally
+            {
+                _Conexao.Desconectar();
+            }
+        }
+
+
+
+
+        }
+
+
+
+
+    }
