@@ -12,7 +12,7 @@ namespace Apetit_API_2019.Models
        String nome_rua { get; set;}
        String num_rua { get; set;} 
        String Cidade { get; set;}
-       String Bairro { get; set;}
+       String Bairro { get; set;} 
        
     }
 }
