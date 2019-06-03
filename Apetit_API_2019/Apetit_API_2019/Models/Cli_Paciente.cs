@@ -12,6 +12,8 @@ namespace Apetit_API_2019.Models
 
         public String Nome { get; set; }
 
+        public String Sobrenome { get; set;}
+
         public DateTime Dtnascimento { get; set; }
 
         public String Sexo { get; set; }

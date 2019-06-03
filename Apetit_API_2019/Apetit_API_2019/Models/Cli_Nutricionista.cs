@@ -13,6 +13,7 @@ namespace Apetit_API_2019.Models
         public String Nome { get; set; }
 
         public String Sobrenome { get; set; }
+
         public DateTime Dtnascimento { get; set; }
 
         public String Sexo { get; set; }
@@ -23,6 +24,14 @@ namespace Apetit_API_2019.Models
 
         public String Telefone { get; set; }
 
+        public String Login { get; set; }
+
+        public String Senha { get; set; }
+
+        public String Dieta { get; set; }
+
+        public String Crn { get; set; }
+
         public String Endereco { get; set; }
 
         public String Cep { get; set; }
@@ -31,17 +40,7 @@ namespace Apetit_API_2019.Models
 
         public String Bairro { get; set; }
 
-        public String Login { get; set; }
-
-        public String Senha { get; set; }
-
-        public String Dieta { get; set; }
-
         public String Cidade { get; set; }
-
-        public String Crn { get; set; }
-
-
 
 
     }

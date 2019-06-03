@@ -6,7 +6,7 @@ using Apetit_API_2019.Models;
 
 namespace Apetit_API_2019.Models
 {
-    public class AgConsultas
+    public class Cli_AgConsultas
     {
         public int IdAgconsultas { get; set; }
         public int IdNutricionista { get; set;  }
@@ -14,6 +14,8 @@ namespace Apetit_API_2019.Models
         public DateTime Dtmarcada { get; set;}
         public DateTime Dtrealizada { get; set; }
         public String Descricao { get; set; }
+       
+
 
 
 

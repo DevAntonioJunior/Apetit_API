@@ -7,8 +7,8 @@ namespace Apetit_API_2019.Models
 {
     public class Endereco_nutricionista
     {
-        int id_endereco_paciente { get; set; }
-        int id_nutricionista { get; set; }
+        int idendereconutricionista { get; set; }
+        int idnutricionista { get; set; }
         int crn { get; set; }
         String nome_rua { get;set;}
         String num_rua { get;set;}

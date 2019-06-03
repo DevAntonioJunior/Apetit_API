@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Apetit_API_2019.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Apetit_API_2019.DAL;
 
 namespace Apetit_API_2019.Controllers
 {
@@ -12,7 +13,8 @@ namespace Apetit_API_2019.Controllers
     [ApiController]
     public class Cli_PacienteController : ControllerBase
     {
-        private static List<Cli_Paciente> listapaciente = new List<Cli_Paciente>();
+        private PacienteDAL pacientedal = new PacienteDAL();
+        private Cli_Paciente paciente = new Cli_Paciente(); 
 
 
         [AcceptVerbs("POST")]
@@ -20,7 +22,7 @@ namespace Apetit_API_2019.Controllers
 
         public void CadastrarPaciente(Cli_Paciente paciente)
         {
-            listapaciente.Add(paciente);
+            this.pacientedal.Salvar(paciente); 
 
 
             
@@ -30,30 +32,16 @@ namespace Apetit_API_2019.Controllers
         [Route("EditarPaciente")]
         public void EditarPaciente(Cli_Paciente paciente)
         {
-
-            listapaciente.Where(n => n.IdPaciente == paciente.IdPaciente).Select(s =>
-            {
-                s.Login = paciente.Login;
-                s.Senha = paciente.Senha;
-                s.Nome = paciente.Nome;
-                s.Dtnascimento = paciente.Dtnascimento;
-                s.Endereco = paciente.Endereco;
-                s.Email = paciente.Email;
-
-                return s;
-            }).ToList();
-
+            this.pacientedal.EditarPaciente(paciente);  
+            
             
         }
 
         [AcceptVerbs("DELETE")]
         [Route("ExcluiPaciente")]
-        public void  ExcluirPaciente(int idpaciente)
+        public void ExcluirPaciente(int paciente)
         {
-            Cli_Paciente paciente = listapaciente.Where(n => n.IdPaciente == idpaciente)
-                .Select(n => n).FirstOrDefault();
-            listapaciente.Remove(paciente);
-
+            this.pacientedal.DeletarPaciente(paciente); 
             
         }
 
@@ -61,19 +49,12 @@ namespace Apetit_API_2019.Controllers
         [Route("BucarPacientePorID/{idpaciente}")]
         public Cli_Paciente BuscarPacienteporId(int idpaciente)
         {
-            Cli_Paciente paciente = listapaciente.Where(n => n.IdPaciente == idpaciente)
-                .Select(n => n).FirstOrDefault();
 
+            pacientedal.ListarPacientes(idpaciente);
 
-
-            return paciente;
+            return paciente; 
         }
 
-        [AcceptVerbs("GET")]
-        [Route("BuscarPaciente")]
-        public  List<Cli_Paciente> BuscarPaciente()
-        {
-            return listapaciente; 
-        }
+        
     }
 }

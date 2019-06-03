@@ -7,9 +7,9 @@ namespace Apetit_API_2019.Models
 {
     public class Dieta
     {
-        int id_dieta { get; set;}
-        int id_paciente { get; set;}
-        int crn { get; set; }
-        String descricao { get;set;}
+        public int id_dieta { get; set;}
+        public int id_paciente { get; set;}
+        public int crn { get; set; }
+        public String descricao { get;set;}
     }
 }
