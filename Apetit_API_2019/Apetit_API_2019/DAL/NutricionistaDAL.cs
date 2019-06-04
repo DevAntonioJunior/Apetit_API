@@ -177,7 +177,7 @@ namespace Apetit_API_2019.DAL
             }
         }
 
-        public List<Cli_Nutricionista> ListarNutricionistas(int Idnutricionista)
+        public List<Cli_Nutricionista> ListarNutricionistas()
         {
 
             List<Cli_Nutricionista> Obterlistanutricionista = new List<Cli_Nutricionista>();

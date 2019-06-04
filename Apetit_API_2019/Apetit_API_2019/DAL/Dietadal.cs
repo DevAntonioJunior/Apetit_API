@@ -20,7 +20,7 @@ namespace Apetit_API_2019.DAL
             try
             {
 
-                cmd1.CommandText = "Insert Into Dieta(descricao)values(?)";
+                cmd1.CommandText = "Insert Into Dieta(titulo,descricao)values(?)";
                 cmd1.Parameters.Add(dieta.descricao); 
                 _Conexao.Conectar();
                 cmd1.ExecuteNonQuery();
@@ -57,7 +57,25 @@ namespace Apetit_API_2019.DAL
             }
         }
 
-
+        public void editartarDieta(Dieta dieta)
+        {
+            try
+            {
+                cmd1.CommandText = "Update Dieta Set('titulo=?',descricao=?)";
+                cmd1.Parameters.Add(dieta.titulo);
+                cmd1.Parameters.Add(dieta.descricao);
+                cmd1.ExecuteNonQuery();
+                _Conexao.Conectar();
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                _Conexao.Desconectar();
+            }
+        }
 
 
     }
