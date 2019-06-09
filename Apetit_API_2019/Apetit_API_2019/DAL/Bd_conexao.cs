@@ -15,7 +15,7 @@ namespace Apetit_API_2019.DAL
 
         public Bd_conexao()
         {
-            con.ConnectionString = ""; 
+            con.ConnectionString = "favor colocara a string de conexao com o banco"; 
 
         }
 
